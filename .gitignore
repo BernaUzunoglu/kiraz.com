@@ -1,0 +1,25 @@
+# ==================================
+# ASP.NET Core / Visual Studio
+# ==================================
+
+
+# Visual Studio (VS 2017+) IDE klasörü
+.vs/
+
+# Visual Studio Code IDE klasörü
+.vscode/
+
+# Derleme çýktýlarý (Build artifacts)
+[Bb]in/
+[Oo]bj/
+
+# NuGet paketleri
+# (Modern .NET projelerinde paketler artýk proje içinde tutulmuyor, 
+# ancak eski projeler veya farklý yapýlandýrmalar için bu kural iyidir)
+packages/
+*.nupkg
+
+# Yerel yapýlandýrma ve gizli (secret) dosyalar
+# ÖNEMLÝ: appsettings.json'u DEÐÝL, sadece ortama özel olanlarý ekleyin
+appsettings.Development.json
+secrets.json

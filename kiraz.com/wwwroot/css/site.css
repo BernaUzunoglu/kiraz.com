@@ -1,0 +1,1624 @@
+/* Temel Bootstrap/Razor Ayarlarý (Dokunulmamýþ Kýsým) */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+/* Zarif Ýpek - Renk Temasý ve Temel Stiller */
+
+/*:root {*/
+    /* Renk Deðiþkenleri */
+    /*--ana-bg: #F5EFE8;*/ /* Açýk Bej/Krem */
+    /*--koyu-aksen: #4B3832;*/ /* Koyu Kahve/Mürdüm - Baþlýklar, Alt Bilgi */
+    /*--orta-toprak: #8B706B;*/ /* Orta Toprak - Ýkincil Vurgular */
+    /*--metin-koyu: #333333;*/ /* Normal Metin */
+    /*--vurgu-detay: #BFA080;*/ /* Soluk Altýn/Bronz */
+/*}*/
+:root {
+    /* ================================== */
+    /* KÝRAZ E-TÝCARET PALETÝ      */
+    /* ================================== */
+    /* 1. Ana Zemin Rengi
+      Kullaným: Sitenin ana arka planý (kiraz deseninin zemini).
+    */
+    --ana-bg: #F5F1EB;
+    /* 2. Ana Aksen Rengi (Koyu Kahve)
+      Kullaným: Header (Üst Menü), Footer (Alt Bilgi), Ana Butonlar.
+      Bu renk, sitenize "çerçeve" etkisi verecek.
+    */
+    --koyu-aksen: #5D4037;
+    /* 3. Ýkincil Vurgu (Tozlu Gül/Kiraz Rengi)
+      Kullaným: Desendeki ana kiraz rengi. Linklerin üzerine gelindiðinde (hover) 
+      veya küçük "Yeni Ürün" etiketlerinde kullanýlabilir.
+    */
+    --orta-toprak: #D3A9A9;
+    /* 4. Detay Vurgu (Adaçayý Yeþili)
+      Kullaným: Desendeki yaprak rengi. Baþarý mesajlarý (örn: "Sepete Eklendi")
+      veya "Doðal Ürün" ikonlarý için ideal.
+    */
+    --vurgu-detay: #B8BFA1;
+    /* 5. Açýk Zemin Üzeri Metin Rengi
+      Kullaným: Paragraflar, normal yazýlar. (Siyah deðil, yumuþak bir koyu gri)
+    */
+    --metin-koyu: #333333;
+    /* 6. Koyu Zemin Üzeri Metin Rengi
+      Kullaným: Header ve Footer'daki linklerin rengi (Kýrýk Beyaz).
+    */
+    --metin-acik: #F4F4F4;
+    /* 7. Sýnýr/Çizgi Rengi
+      Kullaným: Kartlar arasýndaki ince çizgiler veya form giriþ alanlarýnýn kenarlarý.
+    */
+    --kenarlik-rengi: #EAE0D5;
+}
+
+/* Sayfa genel ayarlarý (body stili sade kalmalý) */
+body {
+    font-family: 'Cormorant Garamond', serif;
+    background-color: var(--ana-bg); /* Desen, background-pattern'da olmalý */
+    color: var(--metin-koyu);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* ---------------------------------------------------------------------- */
+/* ARKA PLAN DESENÝ (Pattern) KATMANI - Önceki hatanýn çözüldüðü kýsým */
+/* ---------------------------------------------------------------------- */
+.background-pattern {
+    position: fixed; /* Ekran sabitinde kalmasýný saðlar */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Tüm içeriklerin arkasýna atar (En Önemli Kýsým) */
+    /* Ýkon Döþeme Özellikleri */
+    background-color: var(--ana-bg);
+    background-image: url('../images/kiraz_icon.png');
+    background-repeat: repeat;
+    background-size: 80px 80px;
+    /* Estetik: Opaklýk (Desen çok soluk olmalý) */
+    opacity: 0.1;
+}
+
+/* Baþlýk stilleri (Þimdi doðru yerde, global olarak) */
+h1, h2, h3 {
+    color: var(--koyu-aksen);
+    /* Baþlýklar için daha kalýn font aðýrlýðý kullanabiliriz */
+    font-weight: 700;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+/* Ana menü baðlantýlarý ve butonlar */
+/*.main-nav a {
+    font-family: 'Cormorant Garamond', serif;*/
+    /* Deðeri 1.2'den 1.3'e yükselttik (veya 1.4 yapabilirsiniz) */
+    /*font-size: 1.3em;
+    color: var(--metin-acik);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5em 1em;
+    transition: color 0.3s;
+}*/
+
+/* Ana menü baðlantýlarý ve butonlar - ÇÖZÜM 2 (Modern) */
+.main-nav a {
+    /* === ANA DEÐÝÞÝKLÝKLER === */
+    /* Fontu modern ve týrnaksýz 'Montserrat' ile deðiþtiriyoruz */
+    font-family: 'Montserrat', sans-serif;
+    /* Sans-serif fontlar daha okunaklýdýr, boyutu 1em'e çekebiliriz */
+    font-size: 0.95em;
+    /* Kalýn (700) veya Ýnce (400) deðil, 'Orta' (500) aðýrlýk kullanýyoruz */
+    font-weight: 500;
+    /* === GÖRSEL ÝYÝLEÞTÝRMELER === */
+
+    color: var(--metin-acik);
+    text-decoration: none;
+    padding: 0.5em 1.2em; /* Yan boþluklar */
+    /* BÜYÜK HARF ve harf aralýðý modern görünümü tamamlar */
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    opacity: 0.9; /* Hafif þeffaflýk */
+    /* Geçiþ efektine arka planý da ekleyelim */
+    transition: color 0.3s, background-color 0.3s;
+    border-radius: 4px; /* Hover efektini yumuþatmak için */
+}
+
+    .main-nav a:hover {
+        /* Daha belirgin bir hover efekti */
+        color: var(--koyu-aksen); /* Yazý rengi koyulaþsýn */
+        background-color: var(--metin-acik); /* Zemin rengi açýlsýn */
+        opacity: 1;
+    }
+
+    /* Sepet (0) yazýsýnýn farklý görünmesi için (Zaten HTML'de inline-style var) */
+    /* Ýsterseniz inline-style'ý silip bu CSS'i kullanabilirsiniz */
+    .main-nav a[asp-page="/Sepet"] {
+        color: var(--vurgu-detay); /* Sepet rengi (vurgu-detay olmalý, orta-toprak deðil) */
+        font-weight: 700; /* Sepeti daha belirgin yapar */
+    }
+
+    /* KULLANICININ HANGÝ SAYFADA OLDUÐUNU GÖSTERMEK (ÇOK ÞIK BÝR EKLENTÝ) */
+    /* ASP.NET Core bu 'aria-current' etiketini aktif linke otomatik ekler */
+    .main-nav a[aria-current="page"] {
+        /* Aktif sayfa linki, Sepet gibi vurgulu olsun */
+        color: var(--vurgu-detay);
+        font-weight: 700;
+    }
+
+    .main-nav a:hover {
+        color: var(--orta-toprak);
+    }
+
+.btn-primary {
+    background-color: var(--koyu-aksen);
+    color: var(--ana-bg);
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+    .btn-primary:hover {
+        background-color: var(--vurgu-detay);
+    }
+
+/* Alt Bilgi Stili */
+footer {
+    background-color: var(--koyu-aksen);
+    color: var(--ana-bg);
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 30px;
+}
+
+    footer a {
+        color: var(--vurgu-detay);
+        text-decoration: none;
+        margin: 0 5px;
+    }
+
+
+/* Logo Stili */
+.navbar-brand {
+    /* Baþlýk boyutunu logonun boyutuna göre ayarlýyoruz */
+    width: 250px; /* Logonun tahmini geniþliði */
+    height: 125px; /* Logonun tahmini yüksekliði */
+    /* Metni gizlemek için (Eriþilebilirlik ve SEO için metin hala HTML'de kalýr) */
+   /* text-indent: -9999px;
+    overflow: hidden;*/
+    /* Görseli arka plan olarak ekleme */
+    background-image: url('../images/kiraz_icon.png'); /* Logo görselinin yolu */
+    background-size: contain; /* Görselin alana sýðmasýný saðlar */
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding: 0; /* Ýç dolguyu kaldýr */
+}
+
+/* Baþlýk alanýndaki metin stilini devre dýþý býrakýyoruz (artýk görsel var) */
+.navbar-brand {
+    font-size: 1em !important;
+    font-weight: normal !important;
+    color: transparent !important; /* Metin rengini þeffaf yaparak gizle */
+}
+
+
+.main-header {
+    /* PALET GÜNCELLEMESÝ:
+       Eski renk (#E5DCDC) yerine, arka plan desenimizle tam uyumlu 
+       olan ana rengimizi (var(--ana-bg)) kullanýyoruz. 
+       Bu, daha temiz ve bütünleþik bir görünüm saðlar.
+    */
+    background-color: var(--koyu-aksen);
+    color: var(--ana-bg);
+    padding: 20px 0;
+    border-bottom: 1px solid var(--orta-toprak);
+}
+
+/* ---------------------------------------------------------------------- */
+/* HEADER ve LOGO DÜZELTMESÝ (Temiz Versiyon)                           */
+/* ---------------------------------------------------------------------- */
+
+/* Header'ýn içindeki .container'a özel class (Hizalama için) */
+.main-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Logo Kapsayýcý Linki (a#logo-container) */
+#logo-container {
+    position: relative; /* #logo-text'in konumlanmasý için referans */
+    display: block;
+    width: 250px; /* Logonun geniþliði */
+    height: 100px; /* Logonun yüksekliði */
+    margin-right: 20px; /* Menü ile arasý */
+    /* Tüm çakýþan .navbar-brand stillerini temizliyoruz */
+    background-image: none !important;
+    padding: 0 !important;
+    font-size: 1em !important;
+    color: transparent !important; /* a etiketinin kendi metnini gizle */
+}
+
+    /* Kiraz Görseli (kiraz-logo.png) */
+    /* Bu görsel, 'iyi' ekran görüntüsündeki logodur */
+    #logo-container::before {
+        content: "";
+        /* DÝKKAT: Logonuzun doðru yolu bu olmalý */
+        background-image: url('../images/kiraz_icon.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 5px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+/* KÝRAZ Metni (span#logo-text) */
+#logo-text {
+    position: absolute;
+    z-index: 2; /* Görselin üzerinde */
+    right: 0;
+    bottom: 0;
+    transform: translate(-10px, -15px); /* Sað alttan hafifçe kaydýr */
+    /* ÝSTEDÝÐÝNÝZ SÜSLÜ FONT */
+    font-family: 'Dancing Script', 'Cormorant Garamond', serif;
+    color: var(--ana-bg);
+    font-size: 3.0em; /* Boyutu büyüttük */
+    font-weight: 700;
+}
+
+/* ---------------------------------------------------------------------- */
+/* RESPONSIVE (DUYARLI) TASARIM - MOBÝL CÝHAZ STÝLLERÝ                  */
+/* ---------------------------------------------------------------------- */
+
+/* Önce Hamburger Menü Butonunu (Masaüstünde) Gizleyelim */
+#hamburger-menu {
+    display: none; /* Masaüstünde görünmez */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001; /* Menünün üzerinde kalsýn */
+}
+
+    /* Butonun içindeki 3 çizgiyi stillendirelim */
+    #hamburger-menu span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: var(--koyu-aksen);
+        margin: 5px 0;
+        transition: all 0.3s;
+    }
+
+
+/* EKRAN 992px'DEN KÜÇÜK OLDUÐUNDA (Tablet ve Mobil) */
+@media (max-width: 992px) {
+
+    /* 1. Header Düzenlemesi */
+    .main-header-container {
+        /* Menü alta kaymasýn diye 'wrap' özelliði ekliyoruz */
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    /* 2. Hamburger Ýkonunu Göster */
+    #hamburger-menu {
+        display: block; /* Mobilde görünür yap */
+    }
+
+    /* 3. Ana Menü Linklerini Gizle */
+    .main-nav {
+        /* Menüyü normal akýþtan çýkar, tüm geniþliði kapla */
+        display: none; /* Baþlangýçta gizli */
+        position: absolute;
+        top: 140px; /* Header'ýn bittiði yer (yaklaþýk) */
+        left: 0;
+        width: 100%;
+        background-color: var(--ana-bg);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        /* Menü linklerini alt alta diz */
+        flex-direction: column;
+    }
+
+        /* Menü linklerine stil ver */
+        .main-nav a {
+            padding: 15px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--orta-toprak);
+        }
+
+        /* 4. TIKLANDIÐINDA (JavaScript'in eklediði class) Menüyü Göster */
+        .main-nav.show-menu {
+            display: flex; /* 'display: none' olan menüyü görünür yap */
+        }
+
+    /* 5. Logo Boyutunu Hafifçe Küçült (Opsiyonel) */
+    #logo-container {
+        /* Orijinal: width: 250px; height: 100px; */
+        width: 200px;
+        height: 80px;
+    }
+
+    #logo-text {
+        font-size: 2.5em; /* Orijinal 3.0em */
+        transform: translate(-10px, -10px);
+    }
+}
+
+/* ---------------------------------------------------------------------- */
+/* ANASAYFA (Index.cshtml) Ýçerik Stilleri                                */
+/* ---------------------------------------------------------------------- */
+
+/* Kahraman Alaný (Hero Section) */
+.hero-section {
+    padding: 20px 0;
+}
+
+    .hero-section h1 {
+        font-size: 3.5em;
+        color: var(--orta-toprak);
+    }
+
+    .hero-section h2 {
+        font-size: 4em;
+        color: var(--koyu-aksen);
+        margin-top: 0;
+    }
+
+    .hero-section p {
+        font-size: 1.2em; /* Yazý tipi 1.3em'den 1.2em'e ayarlandý */
+        color: var(--metin-koyu);
+        max-width: 700px;
+        margin: 30px auto;
+    }
+
+    .hero-section .btn-primary {
+        margin-top: 20px;
+        font-size: 1.1em;
+    }
+
+/* Öne Çýkanlar Bölümü */
+.featured-section {
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.featured-item {
+    flex: 1; /* Eþit geniþlikte 2 sütun */
+    text-align: center;
+}
+
+    .featured-item img {
+        width: 100%;
+        height: 400px; /* Resimlerin yüksekliðini sabitledik */
+        object-fit: cover; /* Resmin orantýsýný bozmadan kutuya sýðdýr */
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .featured-item h3 {
+        color: var(--orta-toprak);
+        margin-top: 15px; /* Baþlýk ile resim arasýný açtýk */
+    }
+
+
+/* ---------------------------------------------------------------------- */
+/* RESPONSIVE - Anasayfa Ýçeriði Mobil Uyumluluk                        */
+/* ---------------------------------------------------------------------- */
+
+/* 768px altý (Mobil Cihazlar) */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.2em;
+    }
+
+    .hero-section h2 {
+        font-size: 2.8em;
+    }
+
+    .hero-section p {
+        font-size: 1.1em;
+    }
+
+    /* Öne çýkanlarý alt alta diz */
+    .featured-section {
+        flex-direction: column; /* Sütunlarý alt alta diz */
+        gap: 40px; /* Aradaki boþluðu artýr */
+    }
+
+    .featured-item img {
+        height: auto; /* Mobilde yüksekliði serbest býrak */
+    }
+}
+
+```css
+/* ============================================== */
+/* ANASAYFA HERO BÖLÜMÜ (YENÝ TASARIM)     */
+/* ============================================== */
+/* 1. Ana Bölüm Konteyneri (Kiraz Desenli Arka Plan) */
+.hero-section {
+    /* !!! ÖNEMLÝ: Kendi kiraz deseni görselinizin yolunu buraya yazýn !!!
+      Bu yol, site.css dosyasýnýn bulunduðu yere göredir.
+    */
+    background-image: url('~/images/kiraz_icon.png'); /* YOLU GÜNCELLEYÝN */
+
+    background-repeat: repeat; /* Resmin tekrarlanmasýný saðlar */
+    background-position: center;
+    padding: 40px 20px 70px 20px; /* Bölümün üst/alt ve sað/sol iç boþluklarý */
+    text-align: center; /* Ýçindeki her þeyi yatayda ortalar */
+    width: 100%;
+    box-sizing: border-box; /* Padding'in geniþliði etkilememesi için */
+}
+
+/* 2. Merkezi Metin Alaný (Baþlýk, Paragraf, Buton) */
+.hero-text-content {
+    max-width: 900px; /* Metin alanýnýn çok fazla geniþlemesini önler */
+    margin: 0 auto; /* Metin bloðunu yatayda ortalar */
+}
+
+    /* 3. Ana Baþlýk (Zarif Serif Font) */
+    .hero-text-content h1 {
+        font-family: 'Georgia', 'Times New Roman', serif; /* Zarif, týrnaklý font */
+        font-size: 2.5rem; /* Büyük ve dikkat çekici (yaklaþýk 50px) */
+        font-weight: 500;
+        /* Arka planla uyumlu zengin bir kahve/bordo tonu */
+        color: #4a2c2a;
+        margin-top: 0em;
+        margin-bottom: 25px;
+        line-height: 1.3;
+        /* !!! OKUNABÝLÝRLÝK ÝÇÝN EN ÖNEMLÝ KISIM !!!
+      Metne hafif beyaz bir dýþ gölge vererek desenli arka plandan ayrýþmasýný saðlar.
+    */
+        text-shadow: 0px 1px 4px rgba(255, 255, 255, 0.7);
+    }
+
+    /* 4. Açýklama Metni (Paragraf) */
+    .hero-text-content p {
+        font-family: 'Arial', 'Helvetica Neue', sans-serif; /* Okunaklý, týrnaksýz font */
+        font-size: 1.15rem; /* Yaklaþýk 18px */
+        color: #333; /* Koyu gri, baþlýktan biraz daha yumuþak */
+        line-height: 1.7;
+        max-width: 700px; /* Paragraf satýrlarýnýn çok uzamasýný engeller */
+        margin: 0 auto 35px auto; /* Ortalar ve altýna boþluk býrakýr */
+        /* Paragraf için de okunabilirlik gölgesi */
+        text-shadow: 0px 1px 3px rgba(255, 255, 255, 0.8);
+    }
+
+/* 5. Hero Butonu (Orijinal stilinize sadýk kalarak) */
+.hero-button {
+    display: inline-block; /* Butonun padding ve margin alabilmesi için */
+    background-color: #5d4037; /* Orijinal koyu kahve rengi */
+    color: #f4f4f4; /* Kýrýk beyaz yazý */
+    padding: 12px 30px;
+    text-decoration: none;
+    font-family: 'Arial', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    border: none;
+    border-radius: 2px; /* Hafif kýrýk kenarlar */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .hero-button:hover {
+        background-color: #4a2c2a; /* Hover'da bir ton koyusu */
+    }
+
+/* 6. Görsel Kartlarýnýn Konteyneri (Flexbox ile yan yana) */
+.hero-product-preview {
+    display: flex;
+    justify-content: center; /* Kartlarý yatayda ortalar */
+    gap: 30px; /* Ýki kart arasýndaki boþluk */
+    flex-wrap: wrap; /* Mobil için: Ekran küçülünce alt alta indirir */
+    /* Buton ile görseller arasýna belirgin bir boþluk koyar */
+    margin-top: 60px;
+}
+
+/* 7. Görsel Kartlarý (Modern, gölgeli) */
+.product-card {
+    position: relative; /* Ýçindeki overlay yazýyý pozisyonlamak için ÞART */
+    max-width: 450px; /* Kartlarýn maksimum geniþliði (orijinal gibi geniþ) */
+    width: 100%; /* Mobil için esneklik saðlar */
+    border-radius: 12px; /* Modern yuvarlak köþeler */
+    overflow: hidden; /* Resmin köþelerinin yuvarlatýlmasýný saðlar */
+    /* Yumuþak, modern bir gölge */
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    /* Kartýn üzerine gelince hafifçe yükselme efekti */ 
+    .product-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.22);
+    }
+
+    .product-card img {
+        width: 100%;
+        height: auto; /* Resmin oranýný korur */
+        display: block; /* Resim altýndaki gereksiz boþluðu kaldýrýr */
+    }
+
+/* 8. Görsel Üzerindeki Yazý (Overlay) */
+.card-title-overlay {
+    position: absolute; /* .product-card'a göre pozisyonlanýr */
+    /* Yatayda ve dikeyde ortalamak için */
+    bottom: 25px; /* Alttan boþluk */
+    left: 50%; /* Soldan %50 */
+    transform: translateX(-50%); /* Kendi geniþliðinin yarýsý kadar geri çeker (tam ortalama) */
+
+    background-color: rgba(0, 0, 0, 0.55); /* Yarý þeffaf siyah fon */
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: 'Arial', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    font-size: 1.1rem;
+    /* Modern "buzlu cam" efekti */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+
+/* =============================== */
+/* HERO v2 – Split Screen Mockup   */
+/* =============================== */
+.hero.v2 {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(420px, 0.9fr) 1.1fr; /* sol daha dar, sað daha geniþ */
+    gap: 36px;
+    --overlap:64px;
+    align-items: center;
+    max-width: 1000px;
+    margin: 5px auto 10px auto;
+    padding: 14px 24px 56px 24px;
+    isolation: isolate; /* pattern alt kalsýn */
+    align-items:start;
+}
+
+    /* Zemin pattern (çok soluk) */
+    .hero.v2 .hero__pattern {
+        position: absolute;
+        inset: 0;
+        background: var(--ana-bg);
+        opacity: .12;
+        z-index: -1;
+    }
+
+    /* Sol: glassmorphism kart */
+    .hero.v2 .hero__card {
+        align-self: center;
+        background: rgba(255, 255, 255, 0.72);
+        backdrop-filter: blur(0.2px);
+        -webkit-backdrop-filter: blur(3px);
+        border: 1px solid var(--kenarlik-rengi);
+        border-radius: 22px;
+        padding: 32px 26px 28px 32px; /* sað/alt pedleri küçült */
+        box-shadow: 0 26px 48px rgba(0,0,0,.07);
+        margin-right: -180px; /* deðeri 40–80px arasý oynayabilirsin */
+        position: relative;
+        z-index: 3;
+        max-width: 390px;
+        margin-top: -50px;
+    }
+
+    /* Kiraz mini logo + yazý (opsiyonel) */
+    /* KÝRAZ yazýsý ve ikon bloðu */
+    .hero.v2 .hero__brand {
+        /*position: relative;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 14px;
+        z-index: 4;*/ /* karttan da önde */
+        /*justify-content: center;*/
+        position: relative;
+        display: flex;
+        justify-content: center; /* yatay merkez */
+        align-items: center;
+        padding-top: 8px;
+    }
+
+        /* Kiraz ikonu: kartýn üstünde, 3D gölgeli */
+        .hero.v2 .hero__brand img {
+            width: 130px; /* büyütülmüþ */
+            height: auto;
+            position: absolute;
+            top: -98px; /* kartýn dýþýna taþýr */
+            left: -12px;
+            transform: rotate(-8deg);
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.25));
+            z-index: 5;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+           
+
+    /* KÝRAZ yazýsý */
+    .hero.v2 .hero__brand-text {
+        /*font-family: 'Cormorant Garamond', serif;
+        font-weight: 700;
+        color: var(--koyu-aksen);
+        font-size: 3rem;*/ /* büyütülmüþ */
+        /*letter-spacing: 0.06em;
+        text-shadow: 0 2px 3px rgba(0,0,0,0.1);
+        position: relative;
+        z-index: 3;*/
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 700;
+        font-size: clamp(56px, 2.2vw, 96px);
+        letter-spacing: .06em;
+        color: var(--koyu-aksen);
+        text-align: center;
+        line-height: 1;
+    }
+    /* Kiraz ikonu: kartýn sol-üstüne sabit, yazýyý etkilemez */
+    .hero.v2 .kiraz-icon {
+        position: absolute;
+        top: -46px; /* kartýn dýþýna taþýr */
+        left: 18px;
+        width: 84px; /* boyutu ayarla */
+        height: auto;
+        transform: rotate(-7deg);
+        filter: drop-shadow(0 6px 10px rgba(0,0,0,.28)); /* 3D hissi */
+        pointer-events: none; /* hover metni bozmasýn */
+    }
+        /* Hover’da kiraz ikonu hafif sallansýn */
+    .hero.v2 .hero__brand:hover .kiraz-icon {
+        transform: rotate(-4deg) scale(1.05);
+        filter: drop-shadow(0 8px 14px rgba(0,0,0,.35));
+    }
+
+
+
+    /* Baþlýk */
+    .hero.v2 .hero__title {
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 700;
+        color: var(--koyu-aksen);
+        font-size: 40px;
+        line-height: 1.08;
+        margin: 2px 0 14px 0;
+        text-wrap: balance;
+    }
+
+    /* Paragraf */
+    .hero.v2 .hero__lead {
+        font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        color: var(--metin-koyu);
+        font-size: clamp(15px, 1.4vw, 18px);
+        line-height: 1.75;
+        max-width: 60ch;
+        margin: 0 0 22px 0;
+        opacity: .95;
+    }
+
+    /* CTA buton (kiraz tonlu, yumuþak) */
+    .hero.v2 .hero__cta {
+        display: inline-block;
+        background: radial-gradient(circle at 30% 25%, #c86464, #9b3a3a);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        letter-spacing: .6px;
+        padding: 12px 26px;
+        border-radius: 28px;
+        box-shadow: 0 16px 32px rgba(201,96,96,.20);
+        transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+    }
+
+        .hero.v2 .hero__cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px rgba(201, 96, 96, .35);
+            filter: saturate(1.05);
+        }
+
+    /* Sað: ürün görseli */
+    .hero.v2 .hero__media {
+        position: relative;
+        border-radius: 28px;
+        overflow: hidden;
+        box-shadow: 0 28px 50px rgba(0,0,0,.15);
+        background: #eadfce; /* image yüklenmeden önce hoþ bir arka plan */
+        margin-top: 150px;
+        z-index: 2;
+        transform: translateX(-70px); /* yukarýya hafifçe çek, kartýn altýna girsin */
+    }
+
+        .hero.v2 .hero__media img {
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 4.5 / 5; /* dikey moda hissi */
+            object-fit: cover;
+            display: block;
+            border-radius: 26px;
+        }
+
+        /* Hover’da çok hafif parýltý */
+        .hero.v2 .hero__media::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(120% 60% at 10% 10%, rgba(255,255,255,.15), transparent 60%);
+            pointer-events: none;
+        }
+
+/* --------------------------- */
+/* RESPONSIVE                  */
+/* --------------------------- */
+@media (max-width: 1024px) {
+    .hero.v2 {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 28px 16px 56px;
+    }
+
+        .hero.v2 .hero__card {
+            padding: 28px 22px;
+            max-width: 100%;
+            margin-right: 0;
+        }
+
+        .hero.v2 .hero__media {
+            height: auto;
+            margin-top: 0;
+        }
+
+            .hero.v2 .hero__media img {
+                aspect-ratio: 3 / 4;
+            }
+}
+
+@media (max-width: 560px) {
+    .hero.v2 .hero__title {
+        font-size: clamp(28px, 8vw, 38px);
+    }
+
+    .hero.v2 .hero__lead {
+        font-size: 0.98rem;
+    }
+
+    .hero.v2 .hero__cta {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+
+/* ============ CATALOG (Maðaza) ============ */
+.catalog {
+    max-width: 1200px;
+    margin: 24px auto 80px;
+    padding: 0 16px;
+}
+
+.catalog__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 28px;
+}
+
+@media (max-width: 1024px) {
+    .catalog__grid {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .catalog__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Ürün kartý – tamamý týklanabilir */
+.p-card {
+    position: relative;
+    display: block;
+    background: #fff;
+    border-radius: 18px;
+    border: 1px solid var(--kenarlik-rengi);
+    box-shadow: 0 18px 38px rgba(0,0,0,.08);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+    .p-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 26px 54px rgba(0,0,0,.12);
+    }
+
+    /* 3D Kiraz rozeti */
+    .p-card .cherry-badge {
+        position: absolute;
+       /* top: -12px;*/
+        left: 10px;
+        width: 68px;
+        height: auto;
+        z-index: 2;
+        filter: drop-shadow(0 4px 6px rgba(0,0,0,.25));
+    }
+
+    /* Blur-oval efekti */
+    .p-card::before {
+        content: "";
+        position: absolute;
+       /* top: -20px;*/
+       /* left: -30px;*/
+        width: 80px;
+        height: 80px;
+        background: rgba(255,255,255,0.6);
+        filter: blur(10px);
+        border-radius: 50%;
+        z-index: 1;
+    }
+/* Görsel alaný */
+.p-card__thumb {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    display: block;
+}
+
+/* Ýçerik alaný */
+.p-card__body {
+    padding: 18px 18px 20px;
+}
+
+.p-card__title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 2.2vw, 22px);
+    color: var(--koyu-aksen);
+    margin: 2px 0 6px;
+    line-height: 1.2;
+}
+
+.p-card__desc {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    opacity: .9;
+    margin: 0 0 10px;
+}
+
+.p-card__price {
+    font-weight: 700;
+    color: var(--vurgu-detay);
+    letter-spacing: .3px;
+}
+
+/* Kart alt butonu (opsiyonel) */
+.p-card__cta {
+    margin-top: 12px;
+    display: inline-block;
+    background: radial-gradient(circle at 30% 25%, #c86464, #9b3a3a);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: .4px;
+    padding: 10px 18px;
+    border-radius: 24px;
+    box-shadow: 0 12px 22px rgba(201,96,96,.22);
+    transition: transform .18s ease, box-shadow .18s ease;
+}
+
+    .p-card__cta:hover {
+        transform: translateY(-2px);
+    }
+
+/* ============ PRODUCT DETAIL (Ürün Detayý) ============ */
+.product {
+    max-width: 1200px;
+    margin: 24px auto 100px;
+    padding: 0 16px;
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: 32px;
+}
+
+@media (max-width: 1024px) {
+    .product {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Sol – Galeri */
+.gallery {
+    background: #fff;
+    border: 1px solid var(--kenarlik-rengi);
+    border-radius: 18px;
+    box-shadow: 0 18px 38px rgba(0,0,0,.08);
+    padding: 16px;
+}
+
+.gallery__main {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+}
+
+.gallery__thumbs {
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 10px;
+}
+
+    .gallery__thumbs img {
+        width: 100%;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        border-radius: 10px;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: transform .15s ease, border-color .15s ease;
+    }
+
+        .gallery__thumbs img:hover {
+            transform: translateY(-2px);
+            border-color: var(--orta-toprak);
+        }
+
+/* Sað – Bilgi kutusu */
+.p-info {
+    background: rgba(255,255,255,.85);
+    border: 1px solid var(--kenarlik-rengi);
+    border-radius: 18px;
+    box-shadow: 0 18px 38px rgba(0,0,0,.07);
+    padding: 22px 22px 26px;
+    position: relative;
+}
+    /* Kiraz üst rozeti (3D) */
+    .p-info .cherry-badge {
+        position: absolute;
+        top: -28px;
+        left: 18px;
+        width: 82px;
+        transform: rotate(-7deg);
+        filter: drop-shadow(0 6px 10px rgba(0,0,0,.28));
+    }
+
+/* Baþlýk & fiyat */
+.p-info__title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 3vw, 34px);
+    color: var(--koyu-aksen);
+    line-height: 1.1;
+    margin: 26px 0 8px 0;
+}
+
+.p-info__price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--vurgu-detay);
+    margin-bottom: 16px;
+}
+
+/* Açýklama & özellikler */
+.p-tabs {
+    margin-top: 14px;
+}
+
+    .p-tabs h4 {
+        font-family: 'Cormorant Garamond', serif;
+        color: var(--koyu-aksen);
+        margin: 18px 0 6px;
+    }
+
+    .p-tabs ul {
+        padding-left: 18px;
+        margin: 0;
+    }
+
+    .p-tabs li {
+        margin: 6px 0;
+    }
+
+/* Satýn alma butonu */
+.btn-buy {
+    margin-top: 16px;
+    display: inline-block;
+    background: var(--koyu-aksen);
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 28px;
+    transition: opacity .2s ease, transform .2s ease;
+}
+
+    .btn-buy:hover {
+        opacity: .92;
+        transform: translateY(-1px);
+    }
+
+
+/* ===== SSS (FAQ) Sayfasý ===== */
+.faq {
+    background: url('/images/cherry_bg_pattern.png') repeat;
+    padding: 60px 20px 100px;
+}
+
+.faq__wrapper {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    /*max-width: 800px;*/
+    margin: 0 auto;
+    padding: 40px 50px;
+    border: 1px solid rgba(200,180,160,0.3);
+    position: relative; /* pseudo'lar için referans */
+    overflow: visible;
+}
+
+.faq__title {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 2.2rem;
+    color: var(--koyu-aksen);
+    margin-bottom: 40px;
+}
+
+.faq__item {
+    border-bottom: 1px dashed rgba(139,90,65,0.3);
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+}
+
+    .faq__item summary {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.3rem;
+        color: var(--koyu-aksen);
+        cursor: pointer;
+        list-style: none;
+        position: relative;
+        padding-right: 28px;
+        transition: color 0.3s ease;
+    }
+
+        .faq__item summary::after {
+            content: '+';
+            position: absolute;
+            right: 0;
+            top: 0;
+            color: var(--vurgu-detay);
+            font-weight: 700;
+            transition: transform 0.3s ease;
+        }
+
+    .faq__item[open] summary::after {
+        transform: rotate(45deg);
+    }
+
+    .faq__item summary:hover {
+        color: var(--vurgu-detay);
+    }
+
+    .faq__item p {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1rem;
+        color: var(--metin-koyu);
+        line-height: 1.7;
+        margin-top: 12px;
+        padding-left: 10px;
+    }
+
+/* Sol üst kiraz */
+.faq__wrapper::before,
+.faq__wrapper::after {
+    content: "";
+    position: absolute;
+    width: 130px; /* ? büyütülmüþ boyut */
+    height: 130px;
+    background-image: url('/images/kiraz_icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: drop-shadow(0 10px 16px rgba(0,0,0,.25)); /* biraz daha güçlü gölge */
+    pointer-events: none;
+    z-index: 3;
+    transition: transform .3s ease, filter .3s ease;
+}
+
+/* sol üst */
+.faq__wrapper::before {
+    top: -50px; /* dýþa taþý */
+    left: -35px;
+    transform: rotate(-12deg);
+}
+
+/* sað üst */
+.faq__wrapper::after {
+    top: -46px;
+    right: -30px;
+    transform: rotate(10deg) scale(1.05);
+}
+
+.faq__wrapper:hover::before,
+.faq__wrapper:hover::after {
+    transform: scale(1.08) rotate(0deg);
+    filter: drop-shadow(0 12px 18px rgba(0,0,0,.28));
+}
+
+/* Mobilde biraz küçültelim */
+@media (max-width: 640px) {
+    .faq__wrapper::before,
+    .faq__wrapper::after {
+        width: 90px;
+        height: 90px;
+        filter: drop-shadow(0 8px 14px rgba(0,0,0,.2));
+    }
+
+    .faq__wrapper::before {
+        top: -38px;
+        left: -20px;
+    }
+
+    .faq__wrapper::after {
+        top: -36px;
+        right: -18px;
+    }
+}
+
+
+/* ========== ÝK (Careers) ========== */
+.careers {
+    padding: 60px 20px 100px;
+    background: url('/images/cherry_bg_pattern.png') repeat;
+}
+
+.careers__wrapper {
+    position: relative;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 40px 48px 56px;
+    background: rgba(255,255,255,.78);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(200,180,160,.35);
+    border-radius: 24px;
+    box-shadow: 0 12px 42px rgba(0,0,0,.08);
+    overflow: visible;
+}
+
+    /* Köþelerde kiraz ikonlarý */
+    .careers__wrapper::before,
+    .careers__wrapper::after {
+        content: "";
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        background: url('/images/kiraz_icon.png') no-repeat center/contain;
+        filter: drop-shadow(0 10px 16px rgba(0,0,0,.22));
+        pointer-events: none;
+        z-index: 3;
+    }
+
+    .careers__wrapper::before {
+        top: -46px;
+        left: -28px;
+        transform: rotate(-10deg);
+    }
+
+    .careers__wrapper::after {
+        top: -42px;
+        right: -24px;
+        transform: rotate(8deg) scale(1.02);
+    }
+
+.careers__title {
+    text-align: center;
+    color: var(--koyu-aksen);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 22px;
+}
+
+.careers__lead {
+    text-align: center;
+    color: var(--metin-koyu);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.06rem;
+    line-height: 1.75;
+    margin: 0 auto 28px;
+    max-width: 70ch;
+}
+
+.careers__section-title {
+    color: var(--orta-toprak);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin: 28px 0 14px;
+}
+
+/* Deðerler */
+.values {
+    list-style: none;
+    margin: 0 0 10px;
+    padding: 0;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.values__item {
+    background: #fff;
+    border: 1px solid var(--kenarlik-rengi);
+    border-radius: 16px;
+    padding: 16px 16px 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.06);
+}
+
+.values__label {
+    display: block;
+    color: var(--koyu-aksen);
+    font-weight: 700;
+    margin-bottom: 6px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+}
+
+.values__desc {
+    color: var(--metin-koyu);
+    font-family: 'Montserrat', sans-serif;
+    font-size: .98rem;
+}
+
+/* Pozisyon listesi */
+.positions {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 24px;
+}
+
+.positions__item {
+    background: #fff;
+    border: 1px solid var(--kenarlik-rengi);
+    border-radius: 16px;
+    padding: 18px 16px;
+    box-shadow: 0 12px 26px rgba(0,0,0,.07);
+}
+
+.positions__title {
+    color: var(--koyu-aksen);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 6px;
+}
+
+.positions__desc {
+    color: var(--metin-koyu);
+    font-family: 'Montserrat', sans-serif;
+    font-size: .98rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Baþvuru CTA */
+.apply {
+    margin-top: 14px;
+    border-radius: 18px;
+    border: 2px dashed var(--vurgu-detay);
+    background: #faf8f7;
+    box-shadow: inset 0 0 0 1px rgba(191,160,128,.08);
+}
+
+.apply__body {
+    padding: 22px 18px;
+    text-align: center;
+}
+
+.apply__lead {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--metin-koyu);
+    margin: 0 0 12px;
+}
+
+.apply__btn {
+    display: inline-block;
+    background: radial-gradient(circle at 30% 25%, #c86464, #9b3a3a);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: .4px;
+    padding: 11px 22px;
+    border-radius: 28px;
+    box-shadow: 0 16px 32px rgba(201,96,96,.20);
+    transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+
+    .apply__btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 14px 28px rgba(201,96,96,.32);
+        filter: saturate(1.05);
+    }
+
+.apply__note {
+    color: var(--orta-toprak);
+    margin-top: 10px;
+    font-size: .92rem;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+    .values, .positions {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .careers__wrapper {
+        padding: 28px 18px 40px;
+    }
+
+    .values, .positions {
+        grid-template-columns: 1fr;
+    }
+
+    .careers__wrapper::before, .careers__wrapper::after {
+        width: 90px;
+        height: 90px;
+    }
+
+    .careers__wrapper::before {
+        top: -34px;
+        left: -18px;
+    }
+
+    .careers__wrapper::after {
+        top: -30px;
+        right: -16px;
+    }
+}
+
+/* ====== ÝLETÝÞÝM ====== */
+.contact {
+    padding: 60px 20px 100px;
+    background: url('/images/cherry_bg_pattern.png') repeat;
+}
+
+.contact__wrapper {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 48px 56px;
+    background: rgba(255,255,255,.78);
+    border: 1px solid rgba(200,180,160,.35);
+    border-radius: 24px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 12px 42px rgba(0,0,0,.08);
+    overflow: visible;
+}
+
+    /* Köþelerde kiraz */
+    .contact__wrapper::before,
+    .contact__wrapper::after {
+        content: "";
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        background: url('/images/kiraz_icon.png') center/contain no-repeat;
+        filter: drop-shadow(0 10px 16px rgba(0,0,0,.22));
+        pointer-events: none;
+        z-index: 3;
+    }
+
+    .contact__wrapper::before {
+        top: -46px;
+        left: -28px;
+        transform: rotate(-10deg);
+    }
+
+    .contact__wrapper::after {
+        top: -42px;
+        right: -24px;
+        transform: rotate(8deg) scale(1.02);
+    }
+
+.contact__title {
+    text-align: center;
+    color: var(--koyu-aksen);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 22px;
+}
+
+.contact__grid {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 900px) {
+    .contact__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.contact__card {
+    border-radius: 18px;
+    background: #fff;
+    border: 1px solid var(--kenarlik-rengi);
+    box-shadow: 0 12px 26px rgba(0,0,0,.07);
+    padding: 20px 20px 22px;
+}
+
+/* Sol kart (bilgi) */
+.contact__brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+    .contact__brand img {
+        width: 48px;
+        height: 48px;
+        object-fit: contain;
+        filter: drop-shadow(0 6px 10px rgba(0,0,0,.18));
+    }
+
+    .contact__brand h2 {
+        margin: 0;
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 700;
+        color: var(--koyu-aksen);
+        font-size: 1.4rem;
+    }
+
+.contact__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+}
+
+    .contact__list li {
+        padding: 12px;
+        border: 1px dashed rgba(191,160,128,.45);
+        border-radius: 12px;
+        background: #fff;
+    }
+
+    .contact__list .label {
+        display: block;
+        font-weight: 700;
+        color: var(--orta-toprak);
+        font-family: 'Cormorant Garamond', serif;
+        margin-bottom: 6px;
+    }
+
+    .contact__list a {
+        color: var(--koyu-aksen);
+        text-decoration: none;
+    }
+
+    .contact__list address {
+        font-style: normal;
+        color: var(--metin-koyu);
+    }
+
+.contact__quick {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.btn-outline {
+    display: inline-block;
+    padding: 10px 14px;
+    border-radius: 26px;
+    border: 1px solid var(--orta-toprak);
+    color: var(--orta-toprak);
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: .3px;
+    transition: background .2s ease, color .2s ease, transform .18s ease;
+}
+
+    .btn-outline:hover {
+        background: var(--orta-toprak);
+        color: #fff;
+        transform: translateY(-1px);
+    }
+
+/* Sað kart (form) */
+.form__title {
+    margin: 0 0 10px;
+    color: var(--koyu-aksen);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+.form__row {
+    margin-bottom: 14px;
+}
+
+    .form__row label {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--orta-toprak);
+        font-weight: 600;
+    }
+
+    .form__row input, .form__row textarea {
+        width: 100%;
+        padding: 12px 12px;
+        border-radius: 12px;
+        border: 1px solid var(--kenarlik-rengi);
+        outline: none;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1rem;
+        color: var(--metin-koyu);
+        background: #fff;
+        transition: box-shadow .2s ease, border-color .2s ease;
+    }
+
+        .form__row input:focus, .form__row textarea:focus {
+            border-color: var(--orta-toprak);
+            box-shadow: 0 0 0 3px rgba(211,169,169,.25);
+        }
+
+.form__note {
+    margin-top: 8px;
+    color: var(--orta-toprak);
+    font-size: .92rem;
+}
+
+/* Genel buton (mevcut temadaki ile uyumlu) */
+.btn-primary {
+    background-color: var(--koyu-aksen);
+    color: #fff;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 28px;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: .4px;
+    transition: transform .18s ease, opacity .2s ease;
+}
+
+    .btn-primary:hover {
+        transform: translateY(-1px);
+        opacity: .95;
+    }
+

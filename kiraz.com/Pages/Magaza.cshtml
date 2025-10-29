@@ -1,0 +1,69 @@
+﻿@* @page "/Magaza" *@
+@page "/Koleksiyon/{koleksiyon?}"
+@model kiraz.com.Pages.MagazaModel
+@{
+    ViewData["Title"] = string.IsNullOrEmpty(Model.CurrentCollectionTitle)
+        ? "Mağaza"
+        : $"{Model.CurrentCollectionTitle} Koleksiyonu";
+}
+
+<h1 class="text-center" style="text-align:center; margin-bottom:22px;">
+    @(string.IsNullOrEmpty(Model.CurrentCollectionTitle)
+        ? "Tüm Koleksiyonlarımız"
+        : $"{Model.CurrentCollectionTitle} Koleksiyonu")
+</h1>
+
+<div class="catalog__grid">
+    @foreach (var p in Model.Products)
+    {
+        <div class="p-card">
+            <img class="cherry-badge" src="~/images/kiraz_icon.png" alt="" />
+            <a class="p-card__media"
+               asp-page="/Urun/Detay"
+               asp-route-id="@p.Id"
+               asp-route-slug="@p.Slug"
+               aria-label="@p.Name">
+                <img class="p-card__thumb" src="@Url.Content(p.MainImage)" alt="@p.Name" />
+            </a>
+
+            <div class="p-card__body">
+                <h3 class="p-card__title">
+                    <a asp-page="/Urun/Detay" asp-route-id="@p.Id" asp-route-slug="@p.Slug"
+                       style="text-decoration:none;color:inherit">@p.Name</a>
+                </h3>
+                @if (!string.IsNullOrWhiteSpace(p.Subtitle))
+                {
+                    <p class="p-card__desc">@p.Subtitle</p>
+                }
+                <div class="p-card__price">@p.Price.ToString("0.##") TL</div>
+                <form method="post" asp-page="/Sepet" asp-page-handler="Add" style="display:inline;">
+                    <input type="hidden" name="id" value="@p.Id" />
+                    <input type="hidden" name="name" value="@p.Name" />
+                    <input type="hidden" name="price" value="@p.Price" />
+                    <input type="hidden" name="imageUrl" value="@Url.Content(p.MainImage)" />
+                    <button type="submit" class="p-card__cta">Sepete Ekle</button>
+                </form>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+@* @page
+@model kiraz.com.Pages.MagazaModel
+@{
+    ViewData["Title"] = "Mağaza";
+}
+
+<section class="catalog">
+    <h1 class="text-center" style="text-align:center; margin-bottom:22px;">Tüm Koleksiyonlarımız</h1>
+
+    <div class="catalog__grid">
+        @foreach (var p in Model.Products)
+        {
+            <partial name="_ProductCard" model="p" />
+        }
+    </div>
+</section>
+ *@

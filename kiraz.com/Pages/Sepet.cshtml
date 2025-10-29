@@ -1,0 +1,149 @@
+﻿@page
+@model kiraz.com.Pages.SepetModel
+@{
+    ViewData["Title"] = "Sepet";
+}
+
+<section class="catalog" style="max-width:1100px;">
+    <h1 style="text-align:center;margin-bottom:18px;">Sepet</h1>
+
+    @if (!string.IsNullOrEmpty(TempData["Toast"] as string))
+    {
+        <div class="toast-info">@TempData["Toast"]</div>
+    }
+
+    @if (!Model.Items.Any())
+    {
+        <p style="text-align:center;">Sepetiniz boş.</p>
+    }
+    else
+    {
+        <div class="cart-list">
+            @foreach (var it in Model.Items)
+            {
+                <div class="cart-row">
+                    <img src="@(it.ImageUrl ?? "~/images/placeholder.png")" alt="@it.Name" class="cart-thumb" />
+                    <div class="cart-col">
+                        <div class="cart-name">@it.Name</div>
+                        <div class="cart-price">@it.Price.ToString("0.##") TL</div>
+
+                        <form method="post" asp-page="/Sepet" asp-page-handler="Qty" class="qty-form">
+                            <input type="hidden" name="id" value="@it.Id" />
+                            <input type="number" name="qty" value="@it.Qty" min="1" />
+                            <button type="submit" class="btn-mini">Güncelle</button>
+                        </form>
+
+                        <form method="post" asp-page="/Sepet" asp-page-handler="Remove">
+                            <input type="hidden" name="id" value="@it.Id" />
+                            <button type="submit" class="btn-mini danger">Kaldır</button>
+                        </form>
+                    </div>
+
+                    <div class="cart-line-total">@it.LineTotal.ToString("0.##") TL</div>
+                </div>
+            }
+        </div>
+
+        <div class="cart-summary">
+            <div>Toplam: <strong>@Model.Total.ToString("0.##") TL</strong></div>
+            <a class="btn-buy" href="/Odeme">Ödemeye Geç</a>
+        </div>
+    }
+</section>
+
+<style>
+    .toast-info {
+        background: #fff;
+        border: 1px solid var(--kenarlik-rengi);
+        box-shadow: 0 12px 24px rgba(0,0,0,.08);
+        border-radius: 10px;
+        padding: 10px 14px;
+        margin: 6px auto 16px;
+        max-width: 640px;
+        text-align: center
+    }
+
+    .cart-list {
+        display: flex;
+        flex-direction: column;
+        gap: 14px
+    }
+
+    .cart-row {
+        display: grid;
+        grid-template-columns: 120px 1fr 140px;
+        align-items: center;
+        background: #fff;
+        border: 1px solid var(--kenarlik-rengi);
+        border-radius: 14px;
+        box-shadow: 0 12px 24px rgba(0,0,0,.06);
+        padding: 12px 14px
+    }
+
+    .cart-thumb {
+        width: 110px;
+        height: 110px;
+        object-fit: cover;
+        border-radius: 10px
+    }
+
+    .cart-col {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 14px;
+        align-items: center
+    }
+
+    .cart-name {
+        font-family: 'Cormorant Garamond',serif;
+        font-size: 20px;
+        color: var(--koyu-aksen)
+    }
+
+    .cart-price {
+        font-weight: 600;
+        color: var(--vurgu-detay)
+    }
+
+    .qty-form input[type=number] {
+        width: 70px;
+        padding: 6px 8px;
+        border: 1px solid var(--kenarlik-rengi);
+        border-radius: 8px
+    }
+
+    .btn-mini {
+        padding: 6px 10px;
+        border-radius: 8px;
+        border: 0;
+        background: var(--koyu-aksen);
+        color: #fff
+    }
+
+        .btn-mini.danger {
+            background: #a35a5a
+        }
+
+    .cart-line-total {
+        text-align: right;
+        font-weight: 700
+    }
+
+    .cart-summary {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 16px;
+        background: #fff;
+        border: 1px solid var(--kenarlik-rengi);
+        border-radius: 14px;
+        padding: 14px 16px;
+        box-shadow: 0 12px 24px rgba(0,0,0,.06)
+    }
+  
+    .cart-line-total {
+        justify-self: end;
+        margin-top: 8px
+    }
+
+</style>

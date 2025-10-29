@@ -1,0 +1,51 @@
+﻿@page
+@model kiraz.com.Pages.SSSModel
+@{
+    ViewData["Title"] = "Sık Sorulan Sorular (SSS)";
+}
+
+<section class="faq">
+    <div class="faq__wrapper">
+        <h1 class="faq__title">Sıkça Sorulan Sorular</h1>
+
+        <div class="faq__list">
+
+            <details class="faq__item" open>
+                <summary>1. Ürünlerinizin malzemesi nedir?</summary>
+                <p>
+                    Şal ve eşarp koleksiyonlarımız, en yüksek kalite standartlarında,
+                    doğal ve sürdürülebilir kumaşlardan üretilmiştir.
+                    Başlıca kullandığımız malzemeler <b>saf ipek, organik pamuk, yün ve modal</b>dır.
+                    Her bir ürünün detaylı malzeme bilgisine ilgili ürün sayfasından ulaşabilirsiniz.
+                </p>
+            </details>
+
+            <details class="faq__item">
+                <summary>2. İade ve değişim süreciniz nasıldır?</summary>
+                <p>
+                    Memnuniyetiniz bizim için önemlidir. Satın aldığınız ürünleri, teslimat tarihinden itibaren
+                    <b>14 gün</b> içerisinde, kullanılmamış ve orijinal etiketleri üzerinde olmak şartıyla iade veya değişim yapabilirsiniz.
+                    İade süreci hakkında detaylı bilgi için lütfen <a asp-page="/Iletisim">İletişim</a> sayfamızdan bize ulaşın.
+                </p>
+            </details>
+
+            <details class="faq__item">
+                <summary>3. Ürünlerimi nasıl temizlemeliyim?</summary>
+                <p>
+                    İpeğin hassasiyeti nedeniyle, ürünlerimizin çoğu için <b>kuru temizleme</b> önerilir.
+                    Pamuklu ürünler için düşük ısıda elde yıkama tercih edilebilir.
+                    Ürününüzün ömrünü uzatmak için mutlaka üzerindeki özel bakım etiketlerini kontrol ediniz.
+                </p>
+            </details>
+
+            <details class="faq__item">
+                <summary>4. Hangi ödeme yöntemlerini kullanabilirim?</summary>
+                <p>
+                    Siparişlerinizde <b>Havale/EFT</b> ve <b>tüm banka/kredi kartları</b> ile ödeme yapabilirsiniz.<br />
+                   
+                </p>
+            </details>
+
+        </div>
+    </div>
+</section>
