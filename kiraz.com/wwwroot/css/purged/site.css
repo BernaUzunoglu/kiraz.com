@@ -1,0 +1,1344 @@
+/* Temel Bootstrap/Razor Ayarlar� (Dokunulmam�� K�s�m) */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+/* Zarif �pek - Renk Temas� ve Temel Stiller */
+
+/*:root {*/
+    /* Renk De�i�kenleri */
+    /*--ana-bg: #F5EFE8;*/ /* A��k Bej/Krem */
+    /*--koyu-aksen: #4B3832;*/ /* Koyu Kahve/M�rd�m - Ba�l�klar, Alt Bilgi */
+    /*--orta-toprak: #8B706B;*/ /* Orta Toprak - �kincil Vurgular */
+    /*--metin-koyu: #333333;*/ /* Normal Metin */
+    /*--vurgu-detay: #BFA080;*/ /* Soluk Alt�n/Bronz */
+/*}*/
+:root {
+    /* ================================== */
+    /* K�RAZ E-T�CARET PALET�      */
+    /* ================================== */
+    /* 1. Ana Zemin Rengi
+      Kullan�m: Sitenin ana arka plan� (kiraz deseninin zemini).
+    */
+    --ana-bg: #F5F1EB;
+    /* 2. Ana Aksen Rengi (Koyu Kahve)
+      Kullan�m: Header (�st Men�), Footer (Alt Bilgi), Ana Butonlar.
+      Bu renk, sitenize "�er�eve" etkisi verecek.
+    */
+    --koyu-aksen: #5D4037;
+    /* 3. �kincil Vurgu (Tozlu G�l/Kiraz Rengi)
+      Kullan�m: Desendeki ana kiraz rengi. Linklerin �zerine gelindi�inde (hover) 
+      veya k���k "Yeni �r�n" etiketlerinde kullan�labilir.
+    */
+    --orta-toprak: #D3A9A9;
+    /* 4. Detay Vurgu (Ada�ay� Ye�ili)
+      Kullan�m: Desendeki yaprak rengi. Ba�ar� mesajlar� (�rn: "Sepete Eklendi")
+      veya "Do�al �r�n" ikonlar� i�in ideal.
+    */
+    --vurgu-detay: #B8BFA1;
+    /* 5. A��k Zemin �zeri Metin Rengi
+      Kullan�m: Paragraflar, normal yaz�lar. (Siyah de�il, yumu�ak bir koyu gri)
+    */
+    --metin-koyu: #333333;
+    /* 6. Koyu Zemin �zeri Metin Rengi
+      Kullan�m: Header ve Footer'daki linklerin rengi (K�r�k Beyaz).
+    */
+    --metin-acik: #F4F4F4;
+    /* 7. S�n�r/�izgi Rengi
+      Kullan�m: Kartlar aras�ndaki ince �izgiler veya form giri� alanlar�n�n kenarlar�.
+    */
+    --kenarlik-rengi: #EAE0D5;
+}
+
+/* Sayfa genel ayarlar� (body stili sade kalmal�) */
+body {
+    font-family: 'Cormorant Garamond', serif;
+    background-color: var(--ana-bg); /* Desen, background-pattern'da olmal� */
+    color: var(--metin-koyu);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* ---------------------------------------------------------------------- */
+/* ARKA PLAN DESEN� (Pattern) KATMANI - �nceki hatan�n ��z�ld��� k�s�m */
+/* ---------------------------------------------------------------------- */
+.background-pattern {
+    position: fixed; /* Ekran sabitinde kalmas�n� sa�lar */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* T�m i�eriklerin arkas�na atar (En �nemli K�s�m) */
+    background-color: var(--ana-bg);
+    background-image: url('../images/kiraz_icon.png');
+    background-repeat: repeat;
+    background-size: 80px 80px;
+    /* Estetik: Opakl�k (Desen �ok soluk olmal�) */
+    opacity: 0.1;
+}
+
+/* Ba�l�k stilleri (�imdi do�ru yerde, global olarak) */
+h1, h2, h3 {
+    color: var(--koyu-aksen);
+    /* Ba�l�klar i�in daha kal�n font a��rl��� kullanabiliriz */
+    font-weight: 700;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+
+/* Ana men� ba�lant�lar� ve butonlar - ��Z�M 2 (Modern) */
+.main-nav a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95em;
+    font-weight: 500;
+    color: var(--metin-acik);
+    text-decoration: none;
+    padding: 0.5em 1.2em; /* Yan bo�luklar */
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    opacity: 0.9; /* Hafif �effafl�k */
+    transition: color 0.3s, background-color 0.3s;
+    border-radius: 4px; /* Hover efektini yumu�atmak i�in */
+}
+
+    .main-nav a:hover {
+        /* Daha belirgin bir hover efekti */
+        color: var(--koyu-aksen); /* Yaz� rengi koyula�s�n */
+        background-color: var(--metin-acik); /* Zemin rengi a��ls�n */
+        opacity: 1;
+    }
+
+    .main-nav a:hover {
+        color: var(--orta-toprak);
+    }
+
+.btn-primary {
+    background-color: var(--koyu-aksen);
+    color: var(--ana-bg);
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+    .btn-primary:hover {
+        background-color: var(--vurgu-detay);
+    }
+
+/* Alt Bilgi Stili */
+footer {
+    background-color: var(--koyu-aksen);
+    color: var(--ana-bg);
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 30px;
+}
+
+    footer a {
+        color: var(--vurgu-detay);
+        text-decoration: none;
+        margin: 0 5px;
+    }
+
+
+/* Logo Stili */
+.navbar-brand {
+    /* Ba�l�k boyutunu logonun boyutuna g�re ayarl�yoruz */
+    width: 250px; /* Logonun tahmini geni�li�i */
+    height: 125px; /* Logonun tahmini y�ksekli�i */
+    background-image: url('../images/kiraz_icon.png'); /* Logo g�rselinin yolu */
+    background-size: contain; /* G�rselin alana s��mas�n� sa�lar */
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding: 0; /* �� dolguyu kald�r */
+}
+
+/* Ba�l�k alan�ndaki metin stilini devre d��� b�rak�yoruz (art�k g�rsel var) */
+.navbar-brand {
+    font-size: 1em !important;
+    font-weight: normal !important;
+    color: transparent !important; /* Metin rengini �effaf yaparak gizle */
+}
+
+
+.main-header {
+    background-color: var(--koyu-aksen);
+    color: var(--ana-bg);
+    padding: 20px 0;
+    border-bottom: 1px solid var(--orta-toprak);
+}
+
+/* ---------------------------------------------------------------------- */
+/* HEADER ve LOGO D�ZELTMES� (Temiz Versiyon)                           */
+/* ---------------------------------------------------------------------- */
+
+/* Header'�n i�indeki .container'a �zel class (Hizalama i�in) */
+.main-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Logo Kapsay�c� Linki (a#logo-container) */
+#logo-container {
+    position: relative; /* #logo-text'in konumlanmas� i�in referans */
+    display: block;
+    width: 250px; /* Logonun geni�li�i */
+    height: 100px; /* Logonun y�ksekli�i */
+    margin-right: 20px; /* Men� ile aras� */
+    /* T�m �ak��an .navbar-brand stillerini temizliyoruz */
+    background-image: none !important;
+    padding: 0 !important;
+    font-size: 1em !important;
+    color: transparent !important; /* a etiketinin kendi metnini gizle */
+}
+
+    /* Kiraz G�rseli (kiraz-logo.png) */
+    /* Bu g�rsel, 'iyi' ekran g�r�nt�s�ndeki logodur */
+    #logo-container::before {
+        content: "";
+        /* D�KKAT: Logonuzun do�ru yolu bu olmal� */
+        background-image: url('../images/kiraz_icon.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 5px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+/* K�RAZ Metni (span#logo-text) */
+#logo-text {
+    position: absolute;
+    z-index: 2; /* G�rselin �zerinde */
+    right: 0;
+    bottom: 0;
+    transform: translate(-10px, -15px); /* Sa� alttan hafif�e kayd�r */
+    /* �STED���N�Z S�SL� FONT */
+    font-family: 'Dancing Script', 'Cormorant Garamond', serif;
+    color: var(--ana-bg);
+    font-size: 3.0em; /* Boyutu b�y�tt�k */
+    font-weight: 700;
+}
+
+/* ---------------------------------------------------------------------- */
+/* RESPONSIVE (DUYARLI) TASARIM - MOB�L C�HAZ ST�LLER�                  */
+/* ---------------------------------------------------------------------- */
+
+/* �nce Hamburger Men� Butonunu (Masa�st�nde) Gizleyelim */
+#hamburger-menu {
+    display: none; /* Masa�st�nde g�r�nmez */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001; /* Men�n�n �zerinde kals�n */
+}
+
+    /* Butonun i�indeki 3 �izgiyi stillendirelim */
+    #hamburger-menu span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: var(--koyu-aksen);
+        margin: 5px 0;
+        transition: all 0.3s;
+    }
+
+
+/* EKRAN 992px'DEN K���K OLDU�UNDA (Tablet ve Mobil) */
+@media (max-width: 992px) {
+
+    /* 1. Header D�zenlemesi */
+    .main-header-container {
+        /* Men� alta kaymas�n diye 'wrap' �zelli�i ekliyoruz */
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    /* 2. Hamburger �konunu G�ster */
+    #hamburger-menu {
+        display: block; /* Mobilde g�r�n�r yap */
+    }
+
+    /* 3. Ana Men� Linklerini Gizle */
+    .main-nav {
+        /* Men�y� normal ak��tan ��kar, t�m geni�li�i kapla */
+        display: none; /* Ba�lang��ta gizli */
+        position: absolute;
+        top: 140px; /* Header'�n bitti�i yer (yakla��k) */
+        left: 0;
+        width: 100%;
+        background-color: var(--ana-bg);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        /* Men� linklerini alt alta diz */
+        flex-direction: column;
+    }
+
+        /* Men� linklerine stil ver */
+        .main-nav a {
+            padding: 15px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--orta-toprak);
+        }
+
+        /* 4. TIKLANDI�INDA (JavaScript'in ekledi�i class) Men�y� G�ster */
+        .main-nav.show-menu {
+            display: flex; /* 'display: none' olan men�y� g�r�n�r yap */
+        }
+
+    /* 5. Logo Boyutunu Hafif�e K���lt (Opsiyonel) */
+    #logo-container {
+        /* Orijinal: width: 250px; height: 100px; */
+        width: 200px;
+        height: 80px;
+    }
+
+    #logo-text {
+        font-size: 2.5em; /* Orijinal 3.0em */
+        transform: translate(-10px, -10px);
+    }
+}
+
+
+
+/* =============================== */
+/* HERO v2 � Split Screen Mockup   */
+/* =============================== */
+.hero.v2 {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(420px, 0.9fr) 1.1fr; /* sol daha dar, sa� daha geni� */
+    gap: 36px;
+    --overlap:64px;
+    align-items: center;
+    max-width: 1000px;
+    margin: 5px auto 10px auto;
+    padding: 14px 24px 56px 24px;
+    isolation: isolate; /* pattern alt kals�n */
+    align-items:start;
+}
+
+    /* Zemin pattern (�ok soluk) */
+    .hero.v2 .hero__pattern {
+        position: absolute;
+        inset: 0;
+        background: var(--ana-bg);
+        opacity: .12;
+        z-index: -1;
+    }
+
+    /* Sol: glassmorphism kart */
+    .hero.v2 .hero__card {
+        align-self: center;
+        background: rgba(255, 255, 255, 0.72);
+        backdrop-filter: blur(0.2px);
+        -webkit-backdrop-filter: blur(3px);
+        border: 1px solid var(--kenarlik-rengi);
+        border-radius: 22px;
+        padding: 32px 26px 28px 32px; /* sa�/alt pedleri k���lt */
+        box-shadow: 0 26px 48px rgba(0,0,0,.07);
+        margin-right: -180px; /* de�eri 40�80px aras� oynayabilirsin */
+        position: relative;
+        z-index: 3;
+        max-width: 390px;
+        margin-top: -50px;
+    }
+
+    /* Kiraz mini logo + yaz� (opsiyonel) */
+    /* K�RAZ yaz�s� ve ikon blo�u */
+    .hero.v2 .hero__brand {
+        position: relative;
+        display: flex;
+        justify-content: center; /* yatay merkez */
+        align-items: center;
+        padding-top: 8px;
+    }
+
+        /* Kiraz ikonu: kart�n �st�nde, 3D g�lgeli */
+        .hero.v2 .hero__brand img {
+            width: 130px; /* b�y�t�lm�� */
+            height: auto;
+            position: absolute;
+            top: -98px; /* kart�n d���na ta��r */
+            left: -12px;
+            transform: rotate(-8deg);
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.25));
+            z-index: 5;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+           
+
+    /* K�RAZ yaz�s� */
+    .hero.v2 .hero__brand-text {
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 700;
+        font-size: clamp(56px, 2.2vw, 96px);
+        letter-spacing: .06em;
+        color: var(--koyu-aksen);
+        text-align: center;
+        line-height: 1;
+    }
+    /* Kiraz ikonu: kart�n sol-�st�ne sabit, yaz�y� etkilemez */
+    .hero.v2 .kiraz-icon {
+        position: absolute;
+        top: -46px; /* kart�n d���na ta��r */
+        left: 18px;
+        width: 84px; /* boyutu ayarla */
+        height: auto;
+        transform: rotate(-7deg);
+        filter: drop-shadow(0 6px 10px rgba(0,0,0,.28)); /* 3D hissi */
+        pointer-events: none; /* hover metni bozmas�n */
+    }
+        /* Hover�da kiraz ikonu hafif sallans�n */
+    .hero.v2 .hero__brand:hover .kiraz-icon {
+        transform: rotate(-4deg) scale(1.05);
+        filter: drop-shadow(0 8px 14px rgba(0,0,0,.35));
+    }
+
+
+
+    /* Ba�l�k */
+    .hero.v2 .hero__title {
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 700;
+        color: var(--koyu-aksen);
+        font-size: 40px;
+        line-height: 1.08;
+        margin: 2px 0 14px 0;
+        text-wrap: balance;
+    }
+
+    /* Paragraf */
+    .hero.v2 .hero__lead {
+        font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        color: var(--metin-koyu);
+        font-size: clamp(15px, 1.4vw, 18px);
+        line-height: 1.75;
+        max-width: 60ch;
+        margin: 0 0 22px 0;
+        opacity: .95;
+    }
+
+    /* CTA buton (kiraz tonlu, yumu�ak) */
+    .hero.v2 .hero__cta {
+        display: inline-block;
+        background: radial-gradient(circle at 30% 25%, #c86464, #9b3a3a);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        letter-spacing: .6px;
+        padding: 12px 26px;
+        border-radius: 28px;
+        box-shadow: 0 16px 32px rgba(201,96,96,.20);
+        transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+    }
+
+        .hero.v2 .hero__cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px rgba(201, 96, 96, .35);
+            filter: saturate(1.05);
+        }
+
+    /* Sa�: �r�n g�rseli */
+    .hero.v2 .hero__media {
+        position: relative;
+        border-radius: 28px;
+        overflow: hidden;
+        box-shadow: 0 28px 50px rgba(0,0,0,.15);
+        background: #eadfce; /* image y�klenmeden �nce ho� bir arka plan */
+        margin-top: 150px;
+        z-index: 2;
+        transform: translateX(-70px); /* yukar�ya hafif�e �ek, kart�n alt�na girsin */
+    }
+
+        .hero.v2 .hero__media img {
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 4.5 / 5; /* dikey moda hissi */
+            object-fit: cover;
+            display: block;
+            border-radius: 26px;
+        }
+
+        /* Hover�da �ok hafif par�lt� */
+        .hero.v2 .hero__media::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(120% 60% at 10% 10%, rgba(255,255,255,.15), transparent 60%);
+            pointer-events: none;
+        }
+
+/* --------------------------- */
+/* RESPONSIVE                  */
+/* --------------------------- */
+@media (max-width: 1024px) {
+    .hero.v2 {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 28px 16px 56px;
+    }
+
+        .hero.v2 .hero__card {
+            padding: 28px 22px;
+            max-width: 100%;
+            margin-right: 0;
+        }
+
+        .hero.v2 .hero__media {
+            height: auto;
+            margin-top: 0;
+        }
+
+            .hero.v2 .hero__media img {
+                aspect-ratio: 3 / 4;
+            }
+}
+
+@media (max-width: 560px) {
+    .hero.v2 .hero__title {
+        font-size: clamp(28px, 8vw, 38px);
+    }
+
+    .hero.v2 .hero__lead {
+        font-size: 0.98rem;
+    }
+
+    .hero.v2 .hero__cta {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+
+/* ============ CATALOG (Ma�aza) ============ */
+.catalog {
+    max-width: 1200px;
+    margin: 24px auto 80px;
+    padding: 0 16px;
+}
+
+.catalog__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 28px;
+}
+
+@media (max-width: 1024px) {
+    .catalog__grid {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .catalog__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* �r�n kart� � tamam� t�klanabilir */
+.p-card {
+    position: relative;
+    display: block;
+    background: #fff;
+    border-radius: 18px;
+    border: 1px solid var(--kenarlik-rengi);
+    box-shadow: 0 18px 38px rgba(0,0,0,.08);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+    .p-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 26px 54px rgba(0,0,0,.12);
+    }
+
+    /* 3D Kiraz rozeti */
+    .p-card .cherry-badge {
+        position: absolute;
+       /* top: -12px;*/
+        left: 10px;
+        width: 68px;
+        height: auto;
+        z-index: 2;
+        filter: drop-shadow(0 4px 6px rgba(0,0,0,.25));
+    }
+
+    /* Blur-oval efekti */
+    .p-card::before {
+        content: "";
+        position: absolute;
+       /* top: -20px;*/
+       /* left: -30px;*/
+        width: 80px;
+        height: 80px;
+        background: rgba(255,255,255,0.6);
+        filter: blur(10px);
+        border-radius: 50%;
+        z-index: 1;
+    }
+/* G�rsel alan� */
+.p-card__thumb {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    display: block;
+}
+
+/* ��erik alan� */
+.p-card__body {
+    padding: 18px 18px 20px;
+}
+
+.p-card__title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 2.2vw, 22px);
+    color: var(--koyu-aksen);
+    margin: 2px 0 6px;
+    line-height: 1.2;
+}
+
+.p-card__desc {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    opacity: .9;
+    margin: 0 0 10px;
+}
+
+.p-card__price {
+    font-weight: 700;
+    color: var(--vurgu-detay);
+    letter-spacing: .3px;
+}
+
+/* Kart alt butonu (opsiyonel) */
+.p-card__cta {
+    margin-top: 12px;
+    display: inline-block;
+    background: radial-gradient(circle at 30% 25%, #c86464, #9b3a3a);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: .4px;
+    padding: 10px 18px;
+    border-radius: 24px;
+    box-shadow: 0 12px 22px rgba(201,96,96,.22);
+    transition: transform .18s ease, box-shadow .18s ease;
+}
+
+    .p-card__cta:hover {
+        transform: translateY(-2px);
+    }
+
+/* ============ PRODUCT DETAIL (�r�n Detay�) ============ */
+.product {
+    max-width: 1200px;
+    margin: 24px auto 100px;
+    padding: 0 16px;
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: 32px;
+}
+
+@media (max-width: 1024px) {
+    .product {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Sol � Galeri */
+.gallery {
+    background: #fff;
+    border: 1px solid var(--kenarlik-rengi);
+    border-radius: 18px;
+    box-shadow: 0 18px 38px rgba(0,0,0,.08);
+    padding: 16px;
+}
+
+.gallery__main {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+}
+
+.gallery__thumbs {
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 10px;
+}
+
+    .gallery__thumbs img {
+        width: 100%;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        border-radius: 10px;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: transform .15s ease, border-color .15s ease;
+    }
+
+        .gallery__thumbs img:hover {
+            transform: translateY(-2px);
+            border-color: var(--orta-toprak);
+        }
+
+/* Sa� � Bilgi kutusu */
+.p-info {
+    background: rgba(255,255,255,.85);
+    border: 1px solid var(--kenarlik-rengi);
+    border-radius: 18px;
+    box-shadow: 0 18px 38px rgba(0,0,0,.07);
+    padding: 22px 22px 26px;
+    position: relative;
+}
+    /* Kiraz �st rozeti (3D) */
+    .p-info .cherry-badge {
+        position: absolute;
+        top: -28px;
+        left: 18px;
+        width: 82px;
+        transform: rotate(-7deg);
+        filter: drop-shadow(0 6px 10px rgba(0,0,0,.28));
+    }
+
+/* Ba�l�k & fiyat */
+.p-info__title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 3vw, 34px);
+    color: var(--koyu-aksen);
+    line-height: 1.1;
+    margin: 26px 0 8px 0;
+}
+
+.p-info__price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--vurgu-detay);
+    margin-bottom: 16px;
+}
+
+/* A��klama & �zellikler */
+.p-tabs {
+    margin-top: 14px;
+}
+
+    .p-tabs h4 {
+        font-family: 'Cormorant Garamond', serif;
+        color: var(--koyu-aksen);
+        margin: 18px 0 6px;
+    }
+
+    .p-tabs ul {
+        padding-left: 18px;
+        margin: 0;
+    }
+
+    .p-tabs li {
+        margin: 6px 0;
+    }
+
+/* Sat�n alma butonu */
+.btn-buy {
+    margin-top: 16px;
+    display: inline-block;
+    background: var(--koyu-aksen);
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 28px;
+    transition: opacity .2s ease, transform .2s ease;
+}
+
+    .btn-buy:hover {
+        opacity: .92;
+        transform: translateY(-1px);
+    }
+
+
+/* ===== SSS (FAQ) Sayfas� ===== */
+.faq {
+    background: url('/images/cherry_bg_pattern.png') repeat;
+    padding: 60px 20px 100px;
+}
+
+.faq__wrapper {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    /*max-width: 800px;*/
+    margin: 0 auto;
+    padding: 40px 50px;
+    border: 1px solid rgba(200,180,160,0.3);
+    position: relative; /* pseudo'lar i�in referans */
+    overflow: visible;
+}
+
+.faq__title {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 2.2rem;
+    color: var(--koyu-aksen);
+    margin-bottom: 40px;
+}
+
+.faq__item {
+    border-bottom: 1px dashed rgba(139,90,65,0.3);
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+}
+
+    .faq__item summary {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.3rem;
+        color: var(--koyu-aksen);
+        cursor: pointer;
+        list-style: none;
+        position: relative;
+        padding-right: 28px;
+        transition: color 0.3s ease;
+    }
+
+        .faq__item summary::after {
+            content: '+';
+            position: absolute;
+            right: 0;
+            top: 0;
+            color: var(--vurgu-detay);
+            font-weight: 700;
+            transition: transform 0.3s ease;
+        }
+
+    .faq__item[open] summary::after {
+        transform: rotate(45deg);
+    }
+
+    .faq__item summary:hover {
+        color: var(--vurgu-detay);
+    }
+
+    .faq__item p {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1rem;
+        color: var(--metin-koyu);
+        line-height: 1.7;
+        margin-top: 12px;
+        padding-left: 10px;
+    }
+
+/* Sol �st kiraz */
+.faq__wrapper::before,
+.faq__wrapper::after {
+    content: "";
+    position: absolute;
+    width: 130px; /* ? b�y�t�lm�� boyut */
+    height: 130px;
+    background-image: url('/images/kiraz_icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    filter: drop-shadow(0 10px 16px rgba(0,0,0,.25)); /* biraz daha g��l� g�lge */
+    pointer-events: none;
+    z-index: 3;
+    transition: transform .3s ease, filter .3s ease;
+}
+
+/* sol �st */
+.faq__wrapper::before {
+    top: -50px; /* d��a ta�� */
+    left: -35px;
+    transform: rotate(-12deg);
+}
+
+/* sa� �st */
+.faq__wrapper::after {
+    top: -46px;
+    right: -30px;
+    transform: rotate(10deg) scale(1.05);
+}
+
+.faq__wrapper:hover::before,
+.faq__wrapper:hover::after {
+    transform: scale(1.08) rotate(0deg);
+    filter: drop-shadow(0 12px 18px rgba(0,0,0,.28));
+}
+
+/* Mobilde biraz k���ltelim */
+@media (max-width: 640px) {
+    .faq__wrapper::before,
+    .faq__wrapper::after {
+        width: 90px;
+        height: 90px;
+        filter: drop-shadow(0 8px 14px rgba(0,0,0,.2));
+    }
+
+    .faq__wrapper::before {
+        top: -38px;
+        left: -20px;
+    }
+
+    .faq__wrapper::after {
+        top: -36px;
+        right: -18px;
+    }
+}
+
+
+/* ========== �K (Careers) ========== */
+.careers {
+    padding: 60px 20px 100px;
+    background: url('/images/cherry_bg_pattern.png') repeat;
+}
+
+.careers__wrapper {
+    position: relative;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 40px 48px 56px;
+    background: rgba(255,255,255,.78);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(200,180,160,.35);
+    border-radius: 24px;
+    box-shadow: 0 12px 42px rgba(0,0,0,.08);
+    overflow: visible;
+}
+
+    /* K��elerde kiraz ikonlar� */
+    .careers__wrapper::before,
+    .careers__wrapper::after {
+        content: "";
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        background: url('/images/kiraz_icon.png') no-repeat center/contain;
+        filter: drop-shadow(0 10px 16px rgba(0,0,0,.22));
+        pointer-events: none;
+        z-index: 3;
+    }
+
+    .careers__wrapper::before {
+        top: -46px;
+        left: -28px;
+        transform: rotate(-10deg);
+    }
+
+    .careers__wrapper::after {
+        top: -42px;
+        right: -24px;
+        transform: rotate(8deg) scale(1.02);
+    }
+
+.careers__title {
+    text-align: center;
+    color: var(--koyu-aksen);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 22px;
+}
+
+.careers__lead {
+    text-align: center;
+    color: var(--metin-koyu);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.06rem;
+    line-height: 1.75;
+    margin: 0 auto 28px;
+    max-width: 70ch;
+}
+
+.careers__section-title {
+    color: var(--orta-toprak);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin: 28px 0 14px;
+}
+
+/* De�erler */
+.values {
+    list-style: none;
+    margin: 0 0 10px;
+    padding: 0;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.values__item {
+    background: #fff;
+    border: 1px solid var(--kenarlik-rengi);
+    border-radius: 16px;
+    padding: 16px 16px 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.06);
+}
+
+.values__label {
+    display: block;
+    color: var(--koyu-aksen);
+    font-weight: 700;
+    margin-bottom: 6px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+}
+
+.values__desc {
+    color: var(--metin-koyu);
+    font-family: 'Montserrat', sans-serif;
+    font-size: .98rem;
+}
+
+/* Pozisyon listesi */
+.positions {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 24px;
+}
+
+.positions__item {
+    background: #fff;
+    border: 1px solid var(--kenarlik-rengi);
+    border-radius: 16px;
+    padding: 18px 16px;
+    box-shadow: 0 12px 26px rgba(0,0,0,.07);
+}
+
+.positions__title {
+    color: var(--koyu-aksen);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 6px;
+}
+
+.positions__desc {
+    color: var(--metin-koyu);
+    font-family: 'Montserrat', sans-serif;
+    font-size: .98rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Ba�vuru CTA */
+.apply {
+    margin-top: 14px;
+    border-radius: 18px;
+    border: 2px dashed var(--vurgu-detay);
+    background: #faf8f7;
+    box-shadow: inset 0 0 0 1px rgba(191,160,128,.08);
+}
+
+.apply__body {
+    padding: 22px 18px;
+    text-align: center;
+}
+
+.apply__lead {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--metin-koyu);
+    margin: 0 0 12px;
+}
+
+.apply__btn {
+    display: inline-block;
+    background: radial-gradient(circle at 30% 25%, #c86464, #9b3a3a);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: .4px;
+    padding: 11px 22px;
+    border-radius: 28px;
+    box-shadow: 0 16px 32px rgba(201,96,96,.20);
+    transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+
+    .apply__btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 14px 28px rgba(201,96,96,.32);
+        filter: saturate(1.05);
+    }
+
+.apply__note {
+    color: var(--orta-toprak);
+    margin-top: 10px;
+    font-size: .92rem;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+    .values, .positions {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .careers__wrapper {
+        padding: 28px 18px 40px;
+    }
+
+    .values, .positions {
+        grid-template-columns: 1fr;
+    }
+
+    .careers__wrapper::before, .careers__wrapper::after {
+        width: 90px;
+        height: 90px;
+    }
+
+    .careers__wrapper::before {
+        top: -34px;
+        left: -18px;
+    }
+
+    .careers__wrapper::after {
+        top: -30px;
+        right: -16px;
+    }
+}
+
+/* ====== �LET���M ====== */
+.contact {
+    padding: 60px 20px 100px;
+    background: url('/images/cherry_bg_pattern.png') repeat;
+}
+
+.contact__wrapper {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 48px 56px;
+    background: rgba(255,255,255,.78);
+    border: 1px solid rgba(200,180,160,.35);
+    border-radius: 24px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 12px 42px rgba(0,0,0,.08);
+    overflow: visible;
+}
+
+    /* K��elerde kiraz */
+    .contact__wrapper::before,
+    .contact__wrapper::after {
+        content: "";
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        background: url('/images/kiraz_icon.png') center/contain no-repeat;
+        filter: drop-shadow(0 10px 16px rgba(0,0,0,.22));
+        pointer-events: none;
+        z-index: 3;
+    }
+
+    .contact__wrapper::before {
+        top: -46px;
+        left: -28px;
+        transform: rotate(-10deg);
+    }
+
+    .contact__wrapper::after {
+        top: -42px;
+        right: -24px;
+        transform: rotate(8deg) scale(1.02);
+    }
+
+.contact__title {
+    text-align: center;
+    color: var(--koyu-aksen);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 22px;
+}
+
+.contact__grid {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 900px) {
+    .contact__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.contact__card {
+    border-radius: 18px;
+    background: #fff;
+    border: 1px solid var(--kenarlik-rengi);
+    box-shadow: 0 12px 26px rgba(0,0,0,.07);
+    padding: 20px 20px 22px;
+}
+
+/* Sol kart (bilgi) */
+.contact__brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+    .contact__brand img {
+        width: 48px;
+        height: 48px;
+        object-fit: contain;
+        filter: drop-shadow(0 6px 10px rgba(0,0,0,.18));
+    }
+
+    .contact__brand h2 {
+        margin: 0;
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 700;
+        color: var(--koyu-aksen);
+        font-size: 1.4rem;
+    }
+
+.contact__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+}
+
+    .contact__list li {
+        padding: 12px;
+        border: 1px dashed rgba(191,160,128,.45);
+        border-radius: 12px;
+        background: #fff;
+    }
+
+    .contact__list .label {
+        display: block;
+        font-weight: 700;
+        color: var(--orta-toprak);
+        font-family: 'Cormorant Garamond', serif;
+        margin-bottom: 6px;
+    }
+
+    .contact__list a {
+        color: var(--koyu-aksen);
+        text-decoration: none;
+    }
+
+    .contact__list address {
+        font-style: normal;
+        color: var(--metin-koyu);
+    }
+
+.contact__quick {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.btn-outline {
+    display: inline-block;
+    padding: 10px 14px;
+    border-radius: 26px;
+    border: 1px solid var(--orta-toprak);
+    color: var(--orta-toprak);
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: .3px;
+    transition: background .2s ease, color .2s ease, transform .18s ease;
+}
+
+    .btn-outline:hover {
+        background: var(--orta-toprak);
+        color: #fff;
+        transform: translateY(-1px);
+    }
+
+/* Sa� kart (form) */
+.form__title {
+    margin: 0 0 10px;
+    color: var(--koyu-aksen);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+.form__row {
+    margin-bottom: 14px;
+}
+
+    .form__row label {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--orta-toprak);
+        font-weight: 600;
+    }
+
+    .form__row input, .form__row textarea {
+        width: 100%;
+        padding: 12px 12px;
+        border-radius: 12px;
+        border: 1px solid var(--kenarlik-rengi);
+        outline: none;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1rem;
+        color: var(--metin-koyu);
+        background: #fff;
+        transition: box-shadow .2s ease, border-color .2s ease;
+    }
+
+        .form__row input:focus, .form__row textarea:focus {
+            border-color: var(--orta-toprak);
+            box-shadow: 0 0 0 3px rgba(211,169,169,.25);
+        }
+
+/* Genel buton (mevcut temadaki ile uyumlu) */
+.btn-primary {
+    background-color: var(--koyu-aksen);
+    color: #fff;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 28px;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: .4px;
+    transition: transform .18s ease, opacity .2s ease;
+}
+
+    .btn-primary:hover {
+        transform: translateY(-1px);
+        opacity: .95;
+    }
+

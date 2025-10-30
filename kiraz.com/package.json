@@ -1,0 +1,7 @@
+{
+  "name": "aspnet-purgecss",
+  "version": "1.0.0",
+  "devDependencies": {
+    "purgecss": "^5.0.0"
+  }
+}

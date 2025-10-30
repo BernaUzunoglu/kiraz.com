@@ -1,0 +1,37 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Anasayfa";
+}
+
+<section class="hero v2">
+    <!-- Sol taraf: Cam efektli içerik kartı  -->
+    <div class="hero__card">
+        <div class="hero__brand">
+            <img src="~/images/kiraz_icon.png" alt="KİRAZ" class="kiraz-icon" />
+            <span class="hero__brand-text">KİRAZ BAHÇESİ</span>
+        </div>
+
+        <h1 class="hero__title">
+            Zamansız Zarafetin Doğal Dokunuşu<br />
+        </h1>
+
+        <p class="hero__lead">
+            En kaliteli ipek ve yüksek dokulu kumaşlarımızla tasarlanan premium şal &amp; eşarp
+            koleksiyonlarımız, zarafeti ve konforu bir arada sunar. Sürdürülebilirlik ve el işçiliği
+            odaklı üretimimizle fark yaratıyoruz.
+        </p>
+
+        <a  class="btn hero__cta" asp-page="/Magaza" asp-route-koleksiyon="kiraz-bahcesi">Koleksiyonları Keşfet</a>
+    </div>
+
+    <!-- Sağ taraf: Yakın plan ürün görseli -->
+    <div class="hero__media">
+        <img src="~/images/kirmizi-dalgali-saten-esarp.png"
+             alt="Lüks dokulu şal yakından"
+             loading="lazy" />
+    </div>
+
+    <!-- Zemin kiraz pattern -->
+    <div class="hero__pattern" aria-hidden="true"></div>
+</section>

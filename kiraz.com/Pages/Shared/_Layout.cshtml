@@ -1,0 +1,82 @@
+﻿@* _Layout.cshtml *@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - KİRAZ</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+
+    <div class="background-pattern"></div>
+
+    <header class="main-header">
+        <div class="container main-header-container">
+            <a class="navbar-brand" asp-area="" asp-page="/Index" id="logo-container">
+                <span id="logo-text">KİRAZ</span>
+            </a>
+
+            <button id="hamburger-menu">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav class="main-nav" id="main-nav">
+                <a asp-area="" asp-page="/Index">Anasayfa</a>
+                <a asp-area="" asp-page="/Magaza" asp-route-koleksiyon="@((string)null)" asp-route-clear="1">Mağaza</a>
+                <a asp-area="" asp-page="/SSS">Sık Sorulan Sorular</a>
+                <a asp-area="" asp-page="/InsanKaynaklari">İnsan Kaynakları</a>
+                <a asp-area="" asp-page="/Iletisim">İletişim</a>
+                <!-- 🔹 SAYACA ID VERDİK -->
+                <a asp-area="" asp-page="/Sepet" id="cartLink" style="color: var(--vurgu-detay);">Sepet (0)</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer>
+        &copy; 2025 - KİRAZ - Tüm Hakları Saklıdır. |
+        <a asp-area="" asp-page="/Iletisim">İletişim</a> |
+        <a asp-area="" asp-page="/Hakkimizda">Hakkımızda</a>
+    </footer>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!-- 🔹 SEPET SAYACINI CANLI GÜNCELLEYEN KÜÇÜK SCRIPT -->
+    <script>
+        (function () {
+          const link = document.getElementById('cartLink');
+          if (!link) return;
+
+          async function refreshCartCount() {
+            try {
+              // /Sepet?handler=Count => int toplam adet
+              const r = await fetch('/Sepet?handler=Count', { cache: 'no-store' });
+              if (!r.ok) return;
+              const n = await r.json();
+              link.textContent = `Sepet (${n})`;
+            } catch (e) { /* sessizce geç */ }
+          }
+
+          // İlk yüklemede, sekme odaklandığında ve belirli aralıklarla güncelle
+          window.addEventListener('load', refreshCartCount);
+          document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) refreshCartCount();
+          });
+          // İsteğe bağlı hafif periyodik yenileme (1 dakikada bir)
+          setInterval(refreshCartCount, 60000);
+        })();
+    </script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
