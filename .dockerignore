@@ -1,0 +1,17 @@
+bin/
+obj/
+.vs/
+.git/
+.gitignore
+Dockerfile.*
+docker-compose.*
+node_modules/
+packages/
+*.user
+*.suo
+*.dbmdl
+*.log
+npm-debug.log
+yarn-error.log
+Thumbs.db
+.DS_Store
