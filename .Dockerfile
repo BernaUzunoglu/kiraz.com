@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 
 # csproj ve restore
@@ -14,7 +14,7 @@ COPY . ./
 RUN dotnet publish "kiraz.com.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 # --- Runtime ---
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
+FROM mcr.microsoft.com/dotnet/aspnet:9.0
 WORKDIR /app
 COPY --from=build /app/publish .
 
