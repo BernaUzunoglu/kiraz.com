@@ -1,23 +1,26 @@
-# Build aþamasý
+# syntax=docker/dockerfile:1
+
+# --- Build stage ---
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /app
+WORKDIR /src
 
-# Proje dosyasýný kopyala ve restore et
-COPY kiraz.com/*.csproj ./kiraz.com/
-RUN dotnet restore ./kiraz.com/kiraz.com.csproj
+# Sadece csproj'u kopyala ve restore et (cache dostu)
+COPY kiraz.com/kiraz.com.csproj kiraz.com/
+RUN dotnet restore kiraz.com/kiraz.com.csproj
 
-# Geri kalan dosyalarý kopyala ve build et
+# Tüm kaynaklarý kopyala ve publish et
 COPY . .
-WORKDIR /app/kiraz.com
-RUN dotnet publish -c Release -o /app/out
+RUN dotnet publish kiraz.com/kiraz.com.csproj -c Release -o /publish /p:UseAppHost=false
 
-# Runtime aþamasý
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
+# --- Runtime stage ---
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
-COPY --from=build /app/out .
+COPY --from=build /publish .
 
-# Render için port ayarý
-ENV ASPNETCORE_URLS=http://+:10000
+# Render 'PORT' ortam deðiþkeni saðlar; onu dinleyelim
+ENV ASPNETCORE_URLS=http://0.0.0.0:${PORT}
+
+# EXPOSE zorunlu deðil ama bilgi amaçlý býrakýlabilir
 EXPOSE 10000
 
 ENTRYPOINT ["dotnet", "kiraz.com.dll"]
